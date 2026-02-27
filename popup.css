@@ -1,32 +1,32 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   font-family: "SF Pro Text", "Avenir Next", "Segoe UI", sans-serif;
 
-  --bg-1: #ffe9d6;
-  --bg-2: #ffd9be;
-  --bg-3: #f7e1d4;
-  --blob-1: rgba(255, 255, 255, 0.38);
-  --blob-2: rgba(255, 181, 120, 0.3);
-  --blob-3: rgba(247, 202, 166, 0.36);
+  --bg-1: #0f1218;
+  --bg-2: #17151d;
+  --bg-3: #241b17;
+  --blob-1: rgba(245, 158, 11, 0.12);
+  --blob-2: rgba(194, 89, 25, 0.18);
+  --blob-3: rgba(251, 191, 36, 0.08);
 
-  --panel-top: rgba(255, 248, 240, 0.7);
-  --panel-bottom: rgba(255, 234, 214, 0.5);
-  --edge: rgba(168, 97, 45, 0.28);
-  --shine: rgba(255, 255, 255, 0.7);
+  --panel-top: rgba(44, 34, 31, 0.74);
+  --panel-bottom: rgba(27, 22, 22, 0.72);
+  --edge: rgba(240, 162, 94, 0.24);
+  --shine: rgba(255, 233, 211, 0.13);
 
-  --field-top: rgba(255, 245, 234, 0.58);
-  --field-bottom: rgba(249, 223, 197, 0.4);
-  --control-top: rgba(255, 247, 237, 0.78);
-  --control-bottom: rgba(250, 227, 205, 0.58);
+  --field-top: rgba(63, 48, 42, 0.56);
+  --field-bottom: rgba(34, 27, 26, 0.6);
+  --control-top: rgba(86, 66, 56, 0.58);
+  --control-bottom: rgba(45, 34, 32, 0.74);
 
-  --text: #442717;
-  --muted: #7a5034;
-  --accent: #c75a11;
-  --accent-soft: #eb8d45;
-  --track: rgba(176, 119, 76, 0.28);
+  --text: #f9e8d7;
+  --muted: #d8b89a;
+  --accent: #ffb36f;
+  --accent-soft: #f28f3f;
+  --track: rgba(182, 129, 88, 0.24);
 
-  --status: #6f4327;
-  --danger: #b91c1c;
+  --status: #f2d2b1;
+  --danger: #fca5a5;
 }
 
 * {
@@ -54,11 +54,11 @@ body {
   border-radius: 22px;
   border: 1px solid var(--edge);
   background: linear-gradient(165deg, var(--panel-top) 0%, var(--panel-bottom) 100%);
-  backdrop-filter: blur(18px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
   box-shadow:
-    0 16px 28px rgba(87, 49, 25, 0.18),
+    0 16px 28px rgba(0, 0, 0, 0.4),
     0 1px 0 var(--shine) inset,
-    0 -1px 0 rgba(196, 131, 86, 0.2) inset;
+    0 -1px 0 rgba(172, 98, 46, 0.2) inset;
   overflow: hidden;
 }
 
@@ -67,7 +67,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(122deg, rgba(255, 255, 255, 0.48) 0%, transparent 40%);
+  background: linear-gradient(122deg, rgba(255, 240, 226, 0.16) 0%, transparent 40%);
 }
 
 .popup::after {
@@ -79,7 +79,7 @@ body {
   height: 150px;
   border-radius: 999px;
   pointer-events: none;
-  background: radial-gradient(circle at center, rgba(255, 197, 143, 0.44) 0%, transparent 64%);
+  background: radial-gradient(circle at center, rgba(247, 157, 83, 0.22) 0%, transparent 64%);
 }
 
 .brand {
@@ -95,10 +95,10 @@ body {
   height: 46px;
   display: block;
   border-radius: 14px;
-  border: 1px solid rgba(255, 241, 226, 0.6);
+  border: 1px solid rgba(255, 219, 184, 0.24);
   box-shadow:
-    0 6px 12px rgba(91, 52, 28, 0.2),
-    0 0 0 1px rgba(255, 248, 238, 0.45) inset;
+    0 6px 12px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(255, 240, 224, 0.12) inset;
 }
 
 .brand-copy {
@@ -131,8 +131,8 @@ body {
   border: 1px solid var(--edge);
   background: linear-gradient(180deg, var(--field-top) 0%, var(--field-bottom) 100%);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.72) inset,
-    0 8px 14px rgba(95, 52, 26, 0.14);
+    0 1px 0 var(--shine) inset,
+    0 8px 14px rgba(0, 0, 0, 0.22);
 }
 
 label {
@@ -172,7 +172,7 @@ select {
   font-size: 14px;
   font-weight: 680;
   outline: none;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.78) inset;
+  box-shadow: 0 1px 0 var(--shine) inset;
   transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
 }
 
@@ -183,8 +183,8 @@ select:hover {
 select:focus-visible {
   border-color: var(--accent-soft);
   box-shadow:
-    0 0 0 3px rgba(235, 141, 69, 0.26),
-    0 1px 0 rgba(255, 255, 255, 0.78) inset;
+    0 0 0 3px rgba(242, 143, 63, 0.26),
+    0 1px 0 var(--shine) inset;
 }
 
 .speed-row {
@@ -215,7 +215,7 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-runnable-track {
   height: 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 244, 232, 0.52);
+  border: 1px solid rgba(255, 227, 199, 0.24);
   background: linear-gradient(
     90deg,
     var(--accent-soft) 0%,
@@ -223,7 +223,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     var(--track) var(--progress),
     var(--track) 100%
   );
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72) inset;
+  box-shadow: 0 1px 0 rgba(255, 238, 220, 0.14) inset;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -232,24 +232,24 @@ input[type="range"]::-webkit-slider-thumb {
   height: 28px;
   margin-top: -9px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 244, 232, 0.74);
+  border: 1px solid rgba(255, 231, 206, 0.36);
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(255, 251, 246, 0.95) 0%,
-    rgba(255, 221, 186, 0.52) 28%,
+    rgba(255, 238, 218, 0.84) 0%,
+    rgba(255, 187, 122, 0.44) 28%,
     rgba(199, 90, 17, 0.95) 70%
   );
   box-shadow:
-    0 7px 12px rgba(109, 60, 30, 0.26),
-    0 0 0 1px rgba(124, 63, 25, 0.18) inset;
+    0 7px 12px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(124, 63, 25, 0.24) inset;
 }
 
 input[type="range"]::-moz-range-track {
   height: 12px;
-  border: 1px solid rgba(255, 244, 232, 0.52);
+  border: 1px solid rgba(255, 227, 199, 0.24);
   border-radius: 999px;
   background: var(--track);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72) inset;
+  box-shadow: 0 1px 0 rgba(255, 238, 220, 0.14) inset;
 }
 
 input[type="range"]::-moz-range-progress {
@@ -261,10 +261,10 @@ input[type="range"]::-moz-range-progress {
 input[type="range"]::-moz-range-thumb {
   width: 24px;
   height: 24px;
-  border: 1px solid rgba(255, 244, 232, 0.74);
+  border: 1px solid rgba(255, 231, 206, 0.36);
   border-radius: 50%;
   background: var(--accent-soft);
-  box-shadow: 0 7px 12px rgba(109, 60, 30, 0.26);
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.36);
 }
 
 input[type="range"]:focus-visible {
@@ -274,8 +274,8 @@ input[type="range"]:focus-visible {
 input[type="range"]:focus-visible::-webkit-slider-thumb,
 input[type="range"]:focus-visible::-moz-range-thumb {
   box-shadow:
-    0 7px 12px rgba(109, 60, 30, 0.26),
-    0 0 0 5px rgba(235, 141, 69, 0.28);
+    0 7px 12px rgba(0, 0, 0, 0.36),
+    0 0 0 5px rgba(242, 143, 63, 0.28);
 }
 
 .slider-scale {

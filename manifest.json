@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Video Speed Control",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Minimal popup to control video playback speed with adjustable max range.",
   "permissions": ["storage", "tabs", "scripting", "activeTab"],
   "host_permissions": ["<all_urls>"],
