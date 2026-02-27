@@ -1,43 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none" role="img" aria-label="Video Speed logo">
-  <defs>
-    <linearGradient id="cardGradient" x1="24" y1="16" x2="232" y2="240" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1E293B"/>
-      <stop offset="1" stop-color="#0F172A"/>
-    </linearGradient>
-    <linearGradient id="ringGradient" x1="64" y1="64" x2="192" y2="192" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#22D3EE"/>
-      <stop offset="1" stop-color="#3B82F6"/>
-    </linearGradient>
-    <linearGradient id="needleGradient" x1="122" y1="142" x2="179" y2="98" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FB7185"/>
-      <stop offset="1" stop-color="#F43F5E"/>
-    </linearGradient>
-    <radialGradient id="centerGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 130) rotate(90) scale(72)">
-      <stop stop-color="#0EA5E9" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#0EA5E9" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="softShadow" x="0" y="0" width="256" height="256" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#020617" flood-opacity="0.45"/>
-    </filter>
-  </defs>
-
-  <rect x="16" y="16" width="224" height="224" rx="52" fill="url(#cardGradient)" filter="url(#softShadow)"/>
-  <circle cx="128" cy="128" r="76" fill="url(#centerGlow)"/>
-
-  <path d="M66 154C69 112 94 84 128 84C162 84 187 112 190 154" stroke="#38BDF8" stroke-opacity="0.22" stroke-width="16" stroke-linecap="round"/>
-  <path d="M68 154C71 117 94 93 128 93C162 93 185 117 188 154" stroke="url(#ringGradient)" stroke-width="12" stroke-linecap="round"/>
-
-  <g stroke="#E2E8F0" stroke-opacity="0.8" stroke-width="5" stroke-linecap="round">
-    <line x1="88" y1="150" x2="81" y2="158"/>
-    <line x1="104" y1="129" x2="98" y2="120"/>
-    <line x1="128" y1="121" x2="128" y2="109"/>
-    <line x1="152" y1="129" x2="158" y2="120"/>
-    <line x1="168" y1="150" x2="175" y2="158"/>
-  </g>
-
-  <path d="M128 138L175 104" stroke="url(#needleGradient)" stroke-width="9" stroke-linecap="round"/>
-  <circle cx="128" cy="138" r="9" fill="#F8FAFC"/>
-
-  <path d="M111 171C111 168.791 112.791 167 115 167H140.5C141.181 167 141.848 167.174 142.44 167.505L158.8 176.6C160.06 177.303 160.06 179.097 158.8 179.8L142.44 188.895C141.848 189.226 141.181 189.4 140.5 189.4H115C112.791 189.4 111 187.609 111 185.4V171Z" fill="#E2E8F0"/>
-  <polygon points="126,173 141,178 126,183" fill="#0F172A"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none" role="img" aria-label="Speedometer logo">
+  <path d="M40 156C40 107.399 79.399 68 128 68C176.601 68 216 107.399 216 156" stroke="#0A0A0A" stroke-width="26" stroke-linecap="butt"/>
+  <path d="M126 154L192 92L140 154H126Z" fill="#0A0A0A"/>
+  <circle cx="128" cy="156" r="22" stroke="#0A0A0A" stroke-width="8"/>
+  <circle cx="128" cy="156" r="8" fill="#0A0A0A"/>
 </svg>
