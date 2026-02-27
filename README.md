@@ -32,4 +32,4 @@ Minimal Chrome/Brave extension to control video playback speed from a tiny popup
 
 ## Repository
 
-- URL: _to be filled after GitHub creation_
+- URL: https://github.com/srijan2607/video-speed-control-extension
