@@ -7,6 +7,7 @@ const ALLOWED_MAX_RATES = [2, 3, 4];
 const maxRateEl = document.getElementById("maxRate");
 const rateEl = document.getElementById("rate");
 const rateValueEl = document.getElementById("rateValue");
+const maxRateHintEl = document.getElementById("maxRateHint");
 const statusEl = document.getElementById("status");
 
 function clampRate(rate, maxRate) {
@@ -34,10 +35,24 @@ function formatRate(rate) {
   return `${Number(rate.toFixed(2))}x`;
 }
 
+function setSliderProgress(rate, maxRate) {
+  const range = maxRate - MIN_RATE;
+  if (range <= 0) {
+    rateEl.style.setProperty("--progress", "0%");
+    return;
+  }
+
+  const percent = ((rate - MIN_RATE) / range) * 100;
+  const clampedPercent = Math.max(0, Math.min(percent, 100));
+  rateEl.style.setProperty("--progress", `${clampedPercent}%`);
+}
+
 function updateRateUi(rate, maxRate) {
   rateEl.max = String(maxRate);
   rateEl.value = String(rate);
   rateValueEl.textContent = formatRate(rate);
+  maxRateHintEl.textContent = `${maxRate}x`;
+  setSliderProgress(rate, maxRate);
 }
 
 function storageGet(keys) {
@@ -226,6 +241,7 @@ rateEl.addEventListener("input", () => {
   const maxRate = normalizeMaxRate(maxRateEl.value);
   const rate = clampRate(Number(rateEl.value), maxRate);
   rateValueEl.textContent = formatRate(rate);
+  setSliderProgress(rate, maxRate);
 });
 
 rateEl.addEventListener("change", () => {

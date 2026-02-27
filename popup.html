@@ -8,19 +8,36 @@
   </head>
   <body>
     <main class="popup">
-      <div class="brand" aria-label="Video Speed logo">
+      <div class="brand">
         <img src="logo.svg" class="logo" alt="Video Speed logo">
+        <div class="brand-copy">
+          <h1>Video Speed</h1>
+          <p>Current tab</p>
+        </div>
       </div>
 
-      <label for="maxRate">Max speed</label>
-      <select id="maxRate">
-        <option value="2">2x</option>
-        <option value="3">3x</option>
-        <option value="4">4x</option>
-      </select>
+      <section class="field">
+        <label for="maxRate">Max speed</label>
+        <div class="select-wrap">
+          <select id="maxRate">
+            <option value="2">2x</option>
+            <option value="3">3x</option>
+            <option value="4">4x</option>
+          </select>
+        </div>
+      </section>
 
-      <label for="rate">Speed <span id="rateValue">1x</span></label>
-      <input id="rate" type="range" min="0.25" max="2" step="0.25" value="1">
+      <section class="field">
+        <div class="speed-row">
+          <label for="rate">Speed</label>
+          <output id="rateValue" for="rate">1x</output>
+        </div>
+        <input id="rate" type="range" min="0.25" max="2" step="0.25" value="1">
+        <div class="slider-scale">
+          <span>0.25x</span>
+          <span id="maxRateHint">2x</span>
+        </div>
+      </section>
 
       <p id="status" role="status" aria-live="polite"></p>
     </main>

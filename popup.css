@@ -1,54 +1,228 @@
 :root {
-  color-scheme: light;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color-scheme: light dark;
+  font-family: "SF Pro Text", "Avenir Next", "Segoe UI", sans-serif;
+  --bg: #f3f6fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #5b6476;
+  --border: #d8dfeb;
+  --track: #dde4f1;
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --danger: #b91c1c;
+  --status: #4b5563;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #111b2f;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --border: #2a364d;
+    --track: #334155;
+    --accent: #3b82f6;
+    --accent-strong: #60a5fa;
+    --danger: #fca5a5;
+    --status: #cbd5e1;
+  }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
-  color: #111111;
+  background: radial-gradient(circle at 16% 12%, #ffffff 0%, var(--bg) 48%, var(--bg) 100%);
+  color: var(--text);
 }
 
 .popup {
-  width: 220px;
-  padding: 12px;
+  width: 270px;
+  margin: 0;
+  padding: 14px;
   display: grid;
-  gap: 8px;
+  gap: 14px;
+  background: color-mix(in oklab, var(--card) 95%, transparent);
+  backdrop-filter: blur(6px);
 }
 
 .brand {
   display: flex;
-  justify-content: center;
-  margin-bottom: 4px;
+  align-items: center;
+  gap: 10px;
 }
 
 .logo {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(2, 6, 23, 0.24);
+}
+
+.brand-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.brand-copy h1 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.brand-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
 }
 
 label {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
-select,
-input[type="range"] {
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 10px;
+  height: 6px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: currentColor;
+  color: var(--muted);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+select {
   width: 100%;
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  padding: 9px 34px 9px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+select:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 23%, transparent);
+}
+
+.speed-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 #rateValue {
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 750;
+  color: var(--accent-strong);
+  letter-spacing: -0.01em;
+}
+
+input[type="range"] {
+  --progress: 42%;
+  width: 100%;
+  margin: 0;
+  appearance: none;
+  height: 34px;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 9px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--accent) var(--progress),
+    var(--track) var(--progress),
+    var(--track) 100%
+  );
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  margin-top: -8.5px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: radial-gradient(circle at 30% 30%, #66a3ff 0%, var(--accent) 70%);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+input[type="range"]::-moz-range-track {
+  height: 9px;
+  border: none;
+  border-radius: 999px;
+  background: var(--track);
+}
+
+input[type="range"]::-moz-range-progress {
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+input[type="range"]:focus-visible {
+  outline: none;
+}
+
+input[type="range"]:focus-visible::-webkit-slider-thumb,
+input[type="range"]:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 26%, transparent);
+}
+
+.slider-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -2px;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 600;
 }
 
 #status {
   min-height: 16px;
   margin: 0;
   font-size: 11px;
-  color: #444444;
+  color: var(--status);
+  font-weight: 500;
 }
 
 #status.error {
-  color: #9a1c1c;
+  color: var(--danger);
 }
