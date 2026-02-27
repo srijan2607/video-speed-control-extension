@@ -16,6 +16,18 @@ body {
   gap: 8px;
 }
 
+.brand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
 label {
   font-size: 12px;
   font-weight: 600;
