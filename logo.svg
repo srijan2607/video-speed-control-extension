@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none" role="img" aria-label="Speedometer orange logo">
   <defs>
-    <linearGradient id="arcGrad" x1="40" y1="112" x2="216" y2="112" gradientUnits="userSpaceOnUse">
+    <linearGradient id="arcGrad" x1="22" y1="116" x2="234" y2="116" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#F59E0B"/>
       <stop offset="1" stop-color="#EA580C"/>
     </linearGradient>
-    <linearGradient id="needleGrad" x1="126" y1="154" x2="194" y2="92" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#E77C1B"/>
+    <linearGradient id="needleGrad" x1="126" y1="168" x2="222" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F28F3F"/>
       <stop offset="1" stop-color="#C2410C"/>
     </linearGradient>
   </defs>
-  <path d="M40 156C40 107.399 79.399 68 128 68C176.601 68 216 107.399 216 156" stroke="url(#arcGrad)" stroke-width="26"/>
-  <path d="M126 154L194 92L140 154H126Z" fill="url(#needleGrad)"/>
-  <circle cx="128" cy="156" r="22" stroke="#D97706" stroke-width="8"/>
-  <circle cx="128" cy="156" r="8" fill="#B45309"/>
+  <path d="M22 170A106 106 0 0 1 234 170" stroke="url(#arcGrad)" stroke-width="34"/>
+  <path d="M126 168L222 64L146 168H126Z" fill="url(#needleGrad)"/>
+  <circle cx="128" cy="170" r="26" stroke="#D97706" stroke-width="10"/>
+  <circle cx="128" cy="170" r="10" fill="#B45309"/>
 </svg>

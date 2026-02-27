@@ -91,14 +91,12 @@ body {
 }
 
 .logo {
-  width: 46px;
-  height: 46px;
+  width: 56px;
+  height: 56px;
   display: block;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 219, 184, 0.24);
-  box-shadow:
-    0 6px 12px rgba(0, 0, 0, 0.34),
-    0 0 0 1px rgba(255, 240, 224, 0.12) inset;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
 }
 
 .brand-copy {
