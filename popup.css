@@ -1,18 +1,32 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   font-family: "SF Pro Text", "Avenir Next", "Segoe UI", sans-serif;
 
-  --edge: rgba(251, 191, 137, 0.28);
-  --shine: rgba(255, 243, 230, 0.12);
+  --bg-1: #ffe9d6;
+  --bg-2: #ffd9be;
+  --bg-3: #f7e1d4;
+  --blob-1: rgba(255, 255, 255, 0.38);
+  --blob-2: rgba(255, 181, 120, 0.3);
+  --blob-3: rgba(247, 202, 166, 0.36);
 
-  --text: #f7eee5;
-  --muted: #d4b9a1;
-  --accent: #ffedd5;
-  --accent-soft: #d6a37a;
-  --track: rgba(180, 141, 113, 0.28);
+  --panel-top: rgba(255, 248, 240, 0.7);
+  --panel-bottom: rgba(255, 234, 214, 0.5);
+  --edge: rgba(168, 97, 45, 0.28);
+  --shine: rgba(255, 255, 255, 0.7);
 
-  --status: #f5d8bf;
-  --danger: #fca5a5;
+  --field-top: rgba(255, 245, 234, 0.58);
+  --field-bottom: rgba(249, 223, 197, 0.4);
+  --control-top: rgba(255, 247, 237, 0.78);
+  --control-bottom: rgba(250, 227, 205, 0.58);
+
+  --text: #442717;
+  --muted: #7a5034;
+  --accent: #c75a11;
+  --accent-soft: #eb8d45;
+  --track: rgba(176, 119, 76, 0.28);
+
+  --status: #6f4327;
+  --danger: #b91c1c;
 }
 
 * {
@@ -23,7 +37,11 @@ body {
   margin: 0;
   padding: 8px;
   color: var(--text);
-  background: transparent;
+  background:
+    radial-gradient(circle at 8% 12%, var(--blob-1) 0%, transparent 44%),
+    radial-gradient(circle at 88% 12%, var(--blob-2) 0%, transparent 52%),
+    radial-gradient(circle at 76% 86%, var(--blob-3) 0%, transparent 52%),
+    linear-gradient(150deg, var(--bg-1) 0%, var(--bg-2) 56%, var(--bg-3) 100%);
 }
 
 .popup {
@@ -33,20 +51,35 @@ body {
   padding: 14px;
   display: grid;
   gap: 12px;
-  border-radius: 0;
-  border: 0;
-  background: transparent;
-  backdrop-filter: none;
-  box-shadow: none;
-  overflow: visible;
+  border-radius: 22px;
+  border: 1px solid var(--edge);
+  background: linear-gradient(165deg, var(--panel-top) 0%, var(--panel-bottom) 100%);
+  backdrop-filter: blur(18px) saturate(120%);
+  box-shadow:
+    0 16px 28px rgba(87, 49, 25, 0.18),
+    0 1px 0 var(--shine) inset,
+    0 -1px 0 rgba(196, 131, 86, 0.2) inset;
+  overflow: hidden;
 }
 
 .popup::before {
-  content: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(122deg, rgba(255, 255, 255, 0.48) 0%, transparent 40%);
 }
 
 .popup::after {
-  content: none;
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -36px;
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(255, 197, 143, 0.44) 0%, transparent 64%);
 }
 
 .brand {
@@ -62,10 +95,10 @@ body {
   height: 46px;
   display: block;
   border-radius: 14px;
-  border: 1px solid rgba(255, 229, 205, 0.24);
+  border: 1px solid rgba(255, 241, 226, 0.6);
   box-shadow:
-    0 8px 14px rgba(0, 0, 0, 0.42),
-    0 0 0 1px rgba(255, 245, 235, 0.12) inset;
+    0 6px 12px rgba(91, 52, 28, 0.2),
+    0 0 0 1px rgba(255, 248, 238, 0.45) inset;
 }
 
 .brand-copy {
@@ -85,7 +118,7 @@ body {
   margin: 0;
   color: var(--muted);
   font-size: 11px;
-  font-weight: 540;
+  font-weight: 560;
 }
 
 .field {
@@ -96,10 +129,10 @@ body {
   padding: 10px;
   border-radius: 14px;
   border: 1px solid var(--edge);
-  background: transparent;
+  background: linear-gradient(180deg, var(--field-top) 0%, var(--field-bottom) 100%);
   box-shadow:
-    0 1px 0 var(--shine) inset,
-    0 4px 10px rgba(0, 0, 0, 0.18);
+    0 1px 0 rgba(255, 255, 255, 0.72) inset,
+    0 8px 14px rgba(95, 52, 26, 0.14);
 }
 
 label {
@@ -133,13 +166,13 @@ select {
   appearance: none;
   border: 1px solid var(--edge);
   border-radius: 11px;
-  background: transparent;
+  background: linear-gradient(180deg, var(--control-top) 0%, var(--control-bottom) 100%);
   color: var(--text);
   padding: 9px 34px 9px 10px;
   font-size: 14px;
   font-weight: 680;
   outline: none;
-  box-shadow: 0 1px 0 var(--shine) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.78) inset;
   transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
 }
 
@@ -150,8 +183,8 @@ select:hover {
 select:focus-visible {
   border-color: var(--accent-soft);
   box-shadow:
-    0 0 0 3px rgba(214, 163, 122, 0.24),
-    0 1px 0 var(--shine) inset;
+    0 0 0 3px rgba(235, 141, 69, 0.26),
+    0 1px 0 rgba(255, 255, 255, 0.78) inset;
 }
 
 .speed-row {
@@ -182,7 +215,7 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-runnable-track {
   height: 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 233, 214, 0.22);
+  border: 1px solid rgba(255, 244, 232, 0.52);
   background: linear-gradient(
     90deg,
     var(--accent-soft) 0%,
@@ -190,7 +223,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     var(--track) var(--progress),
     var(--track) 100%
   );
-  box-shadow: 0 1px 0 rgba(255, 245, 233, 0.16) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72) inset;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -199,24 +232,24 @@ input[type="range"]::-webkit-slider-thumb {
   height: 28px;
   margin-top: -9px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 233, 214, 0.36);
+  border: 1px solid rgba(255, 244, 232, 0.74);
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(255, 239, 224, 0.82) 0%,
-    rgba(255, 205, 161, 0.42) 28%,
-    rgba(74, 46, 30, 0.95) 70%
+    rgba(255, 251, 246, 0.95) 0%,
+    rgba(255, 221, 186, 0.52) 28%,
+    rgba(199, 90, 17, 0.95) 70%
   );
   box-shadow:
-    0 7px 14px rgba(0, 0, 0, 0.34),
-    0 0 0 1px rgba(74, 46, 30, 0.26) inset;
+    0 7px 12px rgba(109, 60, 30, 0.26),
+    0 0 0 1px rgba(124, 63, 25, 0.18) inset;
 }
 
 input[type="range"]::-moz-range-track {
   height: 12px;
-  border: 1px solid rgba(255, 233, 214, 0.22);
+  border: 1px solid rgba(255, 244, 232, 0.52);
   border-radius: 999px;
   background: var(--track);
-  box-shadow: 0 1px 0 rgba(255, 245, 233, 0.16) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72) inset;
 }
 
 input[type="range"]::-moz-range-progress {
@@ -228,10 +261,10 @@ input[type="range"]::-moz-range-progress {
 input[type="range"]::-moz-range-thumb {
   width: 24px;
   height: 24px;
-  border: 1px solid rgba(255, 233, 214, 0.36);
+  border: 1px solid rgba(255, 244, 232, 0.74);
   border-radius: 50%;
   background: var(--accent-soft);
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 7px 12px rgba(109, 60, 30, 0.26);
 }
 
 input[type="range"]:focus-visible {
@@ -241,8 +274,8 @@ input[type="range"]:focus-visible {
 input[type="range"]:focus-visible::-webkit-slider-thumb,
 input[type="range"]:focus-visible::-moz-range-thumb {
   box-shadow:
-    0 7px 14px rgba(0, 0, 0, 0.34),
-    0 0 0 5px rgba(214, 163, 122, 0.25);
+    0 7px 12px rgba(109, 60, 30, 0.26),
+    0 0 0 5px rgba(235, 141, 69, 0.28);
 }
 
 .slider-scale {
