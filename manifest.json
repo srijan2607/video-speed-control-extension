@@ -3,7 +3,7 @@
   "name": "Video Speed Control",
   "version": "1.0.0",
   "description": "Minimal popup to control video playback speed with adjustable max range.",
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs", "scripting", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",

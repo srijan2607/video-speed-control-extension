@@ -69,21 +69,68 @@ async function getActiveTab() {
   return tabs[0];
 }
 
+function isRestrictedUrl(url) {
+  if (!url) {
+    return true;
+  }
+
+  return /^(chrome|brave|edge|about|chrome-extension):\/\//.test(url);
+}
+
+function sendMessageToTab(tabId, message) {
+  return new Promise((resolve) => {
+    chrome.tabs.sendMessage(tabId, message, (response) => {
+      if (chrome.runtime.lastError) {
+        resolve({
+          ok: false,
+          unavailable: true,
+          error: chrome.runtime.lastError.message
+        });
+        return;
+      }
+
+      resolve({ ok: true, response: response || { ok: false } });
+    });
+  });
+}
+
+async function injectContentScript(tabId) {
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId },
+      files: ["content.js"]
+    });
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, error: error instanceof Error ? error.message : String(error) };
+  }
+}
+
 async function sendMessageToActiveTab(message) {
   const tab = await getActiveTab();
-  if (!tab || typeof tab.id !== "number") {
+  if (!tab || typeof tab.id !== "number" || isRestrictedUrl(tab.url)) {
     return { ok: false, unavailable: true };
   }
 
-  return new Promise((resolve) => {
-    chrome.tabs.sendMessage(tab.id, message, (response) => {
-      if (chrome.runtime.lastError) {
-        resolve({ ok: false, unavailable: true, error: chrome.runtime.lastError.message });
-        return;
-      }
-      resolve(response || { ok: false });
-    });
-  });
+  let attempt = await sendMessageToTab(tab.id, message);
+  if (
+    !attempt.ok &&
+    typeof attempt.error === "string" &&
+    attempt.error.includes("Receiving end does not exist")
+  ) {
+    const injected = await injectContentScript(tab.id);
+    if (!injected.ok) {
+      return { ok: false, unavailable: true, error: injected.error };
+    }
+
+    attempt = await sendMessageToTab(tab.id, message);
+  }
+
+  if (!attempt.ok) {
+    return { ok: false, unavailable: true, error: attempt.error };
+  }
+
+  return attempt.response;
 }
 
 async function loadSettings() {
